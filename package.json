@@ -1,11 +1,11 @@
 {
-  "name": "chrome-extension-boilerplate-react",
-  "version": "4.3.5",
-  "description": "A chrome extension boilerplate built with React 17, Webpack 5, and Webpack Dev Server 4",
+  "name": "creative-commons-license-generator",
+  "version": "0.0.1",
+  "description": "A chrome extension to generate Creative Commons license",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lxieyang/chrome-extension-boilerplate-react.git"
+    "url": "https://github.com/silloi/creative-commons-license-generator.git"
   },
   "scripts": {
     "build": "node utils/build.js",
