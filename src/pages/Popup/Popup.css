@@ -4,14 +4,14 @@
   bottom: 0px;
   left: 0px;
   right: 0px;
-  text-align: right;
+  text-align: center;
   height: 100%;
   padding: 32px;
   color: #464646;
 }
 
 .App-main {
-  text-align: center;
+  margin: 16px 32px;
 }
 
 .form {
