@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './Popup.css';
-import { DERIVATIVES, COMMERCIAL, SIZE } from './constants';
+import { ATTRIBUTION, DERIVATIVES, COMMERCIAL, SIZE, t } from './constants';
 import { Derivatives, Commercial, Size, ILicense } from './types';
+import { useLocale } from '../../hooks/locale';
 
 type ResultProps = {
   derivatives: Derivatives;
@@ -14,9 +15,13 @@ export const Result: React.VFC<ResultProps> = ({
   commercial,
   size,
 }) => {
-  const [licenseList, setLicenseList] = useState<ILicense[]>([]);
-  const [label, setLabel] = useState('');
-  const [abbr, setAbbr] = useState('by');
+  const { lc, HYPHEN } = useLocale();
+
+  const [licenseList, setLicenseList] = useState<ILicense[]>([
+    ATTRIBUTION.ATTRIBUTION,
+  ]);
+  const [label, setLabel] = useState<string>('');
+  const [abbr, setAbbr] = useState<string>('');
 
   useEffect(() => {
     setLicenseList((licenseList) => {
@@ -48,18 +53,11 @@ export const Result: React.VFC<ResultProps> = ({
 
   useEffect(() => {
     setLabel(
-      licenseList.reduce(
-        (tempLabel, license) => tempLabel + '-' + license.label,
-        ''
-      )
+      licenseList.map((license) => license.label[lc]).join(HYPHEN) +
+        ` 4.0 ${t.international[lc]}`
     );
-    setAbbr(
-      licenseList.reduce(
-        (tempAbbr, license) => tempAbbr + '-' + license.abbr,
-        'by'
-      )
-    );
-  }, [licenseList]);
+    setAbbr(licenseList.map((license) => license.abbr).join('-'));
+  }, [licenseList, lc, HYPHEN]);
 
   const [linkUrl, setLinkUrl] = useState(
     'http://creativecommons.org/licenses/by/4.0/'
@@ -74,20 +72,13 @@ export const Result: React.VFC<ResultProps> = ({
 
   useEffect(() => {
     setImageUrl(
-      `https://i.creativecommons.org/l/${abbr}/4.0/${SIZE[size]}.png`
+      `https://i.creativecommons.org/l/${abbr}/4.0/${SIZE[size].abbr}.png`
     );
   }, [abbr, size]);
 
   return (
     <>
-      <a rel="noreferrer" href={linkUrl} target="_blank">
-        <img
-          alt="Creative Commons License"
-          style={{ borderWidth: 0 }}
-          src={imageUrl}
-        />
-      </a>
-      <br />
+      <Preview label={label} linkUrl={linkUrl} imageUrl={imageUrl} />
       <Code label={label} linkUrl={linkUrl} imageUrl={imageUrl} />
     </>
   );
@@ -100,7 +91,41 @@ type CodeProps = {
 };
 
 const Code: React.VFC<CodeProps> = ({ label, linkUrl, imageUrl }) => {
-  const code = `<a rel="license" href="${linkUrl}"><img alt="Creative Commons License" style="border-width:0" src="${imageUrl}" /></a><br />This work is licensed under a <a rel="license" href="${linkUrl}">Creative Commons ${label} 4.0 International License</a>.`;
+  const code = useMemo(
+    () =>
+      `<a rel="license" href="${linkUrl}"><img alt="Creative Commons License" style="border-width:0" src="${imageUrl}" /></a><br />This work is licensed under a <a rel="license" href="${linkUrl}">Creative Commons ${label} License</a>.`,
+    [label, linkUrl, imageUrl]
+  );
+  const copy = () => navigator.clipboard.writeText(code);
 
-  return <textarea>{code}</textarea>;
+  return (
+    <>
+      <textarea readOnly className="codetocopy">
+        {code}
+      </textarea>
+      <button onClick={copy}>Copy to clipboard</button>
+    </>
+  );
 };
+
+type PreviewProps = { label: string; linkUrl: string; imageUrl: string };
+
+const Preview: React.VFC<PreviewProps> = ({ label, linkUrl, imageUrl }) => (
+  <div className="preview">
+    <div>
+      <a rel="noreferrer" href={linkUrl} target="_blank">
+        <img
+          alt="Creative Commons License"
+          style={{ borderWidth: 0 }}
+          src={imageUrl}
+        />
+      </a>
+      <br />
+      {`This work is licensed under a `}
+      <a rel="noreferrer" href={linkUrl} target="_blank">
+        {`Creative Commons ${label} License`}
+      </a>
+      {`.`}
+    </div>
+  </div>
+);

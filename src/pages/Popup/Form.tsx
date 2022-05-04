@@ -2,6 +2,7 @@ import React from 'react';
 import './Popup.css';
 import { DERIVATIVES, COMMERCIAL, SIZE } from './constants';
 import { Derivatives, Commercial, Size } from './types';
+import { useLocale } from '../../hooks/locale';
 
 type FormProps = {
   derivatives: Derivatives;
@@ -20,7 +21,7 @@ export const Form: React.VFC<FormProps> = ({
   setCommercial,
   setSize,
 }) => (
-  <div>
+  <div className="form">
     <Select
       options={DERIVATIVES}
       value={derivatives}
@@ -37,20 +38,24 @@ export const Select: React.VFC<{
   options: typeof DERIVATIVES | typeof COMMERCIAL | typeof SIZE;
   value: Derivatives | Commercial | Size;
   setValue: (value: any) => void;
-}> = ({ options, value, setValue }) => (
-  <div style={{ marginBottom: 10 }}>
-    {Object.keys(options).map((option) => (
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <label htmlFor={option}>{option}</label>
-        <input
-          type="radio"
-          name={option}
-          id={option}
-          value={option}
-          checked={option === value}
-          onChange={(e) => setValue(e.target.value as keyof typeof options)}
-        />
-      </div>
-    ))}
-  </div>
-);
+}> = ({ options, value, setValue }) => {
+  const { lc } = useLocale();
+
+  return (
+    <div className="select">
+      {Object.entries(options).map(([optionKey, optionValue]) => (
+        <span className="option">
+          <input
+            type="radio"
+            name={optionKey}
+            id={optionKey}
+            value={optionKey}
+            checked={optionKey === value}
+            onChange={(e) => setValue(e.target.value as keyof typeof options)}
+          />
+          <label htmlFor={optionKey}>{optionValue.label[lc]}</label>
+        </span>
+      ))}
+    </div>
+  );
+};

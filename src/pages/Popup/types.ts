@@ -5,6 +5,9 @@ export type Commercial = keyof typeof COMMERCIAL;
 export type Size = keyof typeof SIZE;
 
 export interface ILicense {
-  label: string;
+  label: {
+    en: string;
+    ja: string;
+  };
   abbr: string;
 }

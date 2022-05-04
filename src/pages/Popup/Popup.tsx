@@ -11,7 +11,7 @@ const Popup: React.VFC = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <main className="App-main">
         <Form
           derivatives={derivatives}
           commercial={commercial}
@@ -21,7 +21,7 @@ const Popup: React.VFC = () => {
           setSize={setSize}
         />
         <Result derivatives={derivatives} commercial={commercial} size={size} />
-      </header>
+      </main>
     </div>
   );
 };
