@@ -7,7 +7,7 @@ import {
   SIZE,
   dictionary,
 } from './constants';
-import { Derivatives, Commercial, Size, ILicense } from './types';
+import type { Derivatives, Commercial, Size, License } from './types';
 import { useLocale } from '../../hooks/locale';
 
 type ResultProps = {
@@ -23,7 +23,7 @@ export const Result: React.VFC<ResultProps> = ({
 }) => {
   const { t } = useLocale();
 
-  const [licenseList, setLicenseList] = useState<ILicense[]>([
+  const [licenseList, setLicenseList] = useState<License[]>([
     ATTRIBUTION.ATTRIBUTION,
   ]);
   const [linkText, setLinkText] = useState<string>('');
