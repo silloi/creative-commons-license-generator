@@ -39,7 +39,7 @@ export const Select: React.VFC<{
   value: Derivatives | Commercial | Size;
   setValue: (value: any) => void;
 }> = ({ options, value, setValue }) => {
-  const { lc } = useLocale();
+  const { t } = useLocale();
 
   return (
     <div className="select">
@@ -53,7 +53,7 @@ export const Select: React.VFC<{
             checked={optionKey === value}
             onChange={(e) => setValue(e.target.value as keyof typeof options)}
           />
-          <label htmlFor={optionKey}>{optionValue.label[lc]}</label>
+          <label htmlFor={optionKey}>{t(optionValue.label)}</label>
         </span>
       ))}
     </div>
