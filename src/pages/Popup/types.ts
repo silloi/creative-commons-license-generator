@@ -10,3 +10,12 @@ export type License = {
   };
   abbr: string;
 };
+
+export type PreviewProps = {
+  linkBefore: string;
+  linkAfter: string;
+  linkText: string;
+  linkUrl: string;
+  imgAlt: string;
+  imageUrl: string;
+};

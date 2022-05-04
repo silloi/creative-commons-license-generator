@@ -9,6 +9,8 @@ import {
 } from './constants';
 import type { Derivatives, Commercial, Size, License } from './types';
 import { useLocale } from '../../hooks/locale';
+import { Preview } from './Preview';
+import { Code } from './Code';
 
 type ResultProps = {
   derivatives: Derivatives;
@@ -113,58 +115,3 @@ export const Result: React.VFC<ResultProps> = ({
     </>
   );
 };
-
-type PreviewProps = {
-  linkBefore: string;
-  linkAfter: string;
-  linkText: string;
-  linkUrl: string;
-  imgAlt: string;
-  imageUrl: string;
-};
-
-const Code: React.VFC<PreviewProps> = ({
-  linkBefore,
-  linkAfter,
-  linkText,
-  linkUrl,
-  imgAlt,
-  imageUrl,
-}) => {
-  const code = useMemo(
-    () =>
-      `<a rel="license" href="${linkUrl}"><img alt="${imgAlt}" style="border-width:0" src="${imageUrl}" /></a><br />${linkBefore}<a rel="license" href="${linkUrl}">${linkText}</a>${linkAfter}`,
-    [linkBefore, linkAfter, linkText, linkUrl, imgAlt, imageUrl]
-  );
-  const copy = () => navigator.clipboard.writeText(code);
-
-  return (
-    <>
-      <textarea readOnly className="codetocopy" value={code} />
-      <button onClick={copy}>Copy to clipboard</button>
-    </>
-  );
-};
-
-const Preview: React.VFC<PreviewProps> = ({
-  linkBefore,
-  linkAfter,
-  linkText,
-  linkUrl,
-  imgAlt,
-  imageUrl,
-}) => (
-  <div className="preview">
-    <div>
-      <a rel="noreferrer" href={linkUrl} target="_blank">
-        <img alt={imgAlt} style={{ borderWidth: 0 }} src={imageUrl} />
-      </a>
-      <br />
-      {linkBefore}
-      <a rel="noreferrer" href={linkUrl} target="_blank">
-        {linkText}
-      </a>
-      {linkAfter}
-    </div>
-  </div>
-);
