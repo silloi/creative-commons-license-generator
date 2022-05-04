@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { LC } from '../pages/Popup/constants';
 
-type Lc = typeof LC[number];
+export type Lc = typeof LC[number];
 
 export const useLocale = () => {
   const [lc, setLc] = useState<Lc>('en');
@@ -59,7 +59,9 @@ export const useLocale = () => {
     }
   }, []);
 
-  const HYPHEN = lc === 'ja' ? ' - ' : '-';
+  const t = (dictionary: { [key: string]: string }) => {
+    return dictionary[lc] ?? dictionary['en'] ?? '';
+  };
 
-  return { lc, HYPHEN };
+  return { lc, t };
 };

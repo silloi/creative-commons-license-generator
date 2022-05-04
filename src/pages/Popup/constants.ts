@@ -73,10 +73,30 @@ export const SIZE = {
   },
 } as const;
 
-export const t = {
+export const dictionary = {
+  creativeCommons: {
+    en: 'Creative Commons',
+    ja: 'クリエイティブ・コモンズ',
+  },
   international: {
     en: 'International',
     ja: '国際',
+  },
+  license: {
+    en: 'License',
+    ja: 'ライセンス',
+  },
+  linkBefore: {
+    en: 'This work is licensed under a ',
+    ja: 'この 作品 は ',
+  },
+  linkAfter: {
+    en: 'This work is licensed under a ',
+    ja: 'の下に提供されています。',
+  },
+  hyphen: {
+    en: '-',
+    ja: ' - ',
   },
 } as const;
 
