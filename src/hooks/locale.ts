@@ -61,5 +61,5 @@ export const useLocale = () => {
     return dictionary[lc] ?? dictionary['en'] ?? '';
   };
 
-  return { t };
+  return { lc, t };
 };

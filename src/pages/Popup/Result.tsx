@@ -23,7 +23,7 @@ export const Result: React.VFC<ResultProps> = ({
   commercial,
   size,
 }) => {
-  const { t } = useLocale();
+  const { lc, t } = useLocale();
 
   const [licenseList, setLicenseList] = useState<License[]>([
     ATTRIBUTION.ATTRIBUTION,
@@ -61,14 +61,14 @@ export const Result: React.VFC<ResultProps> = ({
 
   useEffect(() => {
     setLinkText(
-      t(dictionary.creativeCommons) +
+      (lc === 'fr' ? `${t(dictionary.license)} ` : '') +
+        t(dictionary.creativeCommons) +
         t(dictionary.space) +
         licenseList
           .map((license) => t(license.label))
           .join(t(dictionary.hyphen)) +
         ` 4.0 ${t(dictionary.international)}` +
-        t(dictionary.space) +
-        t(dictionary.license)
+        (lc !== 'fr' ? t(dictionary.space) + t(dictionary.license) : '')
     );
     setAbbr(licenseList.map((license) => license.abbr).join('-'));
   }, [licenseList, t]);
