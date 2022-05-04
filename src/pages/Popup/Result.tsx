@@ -71,7 +71,7 @@ export const Result: React.VFC<ResultProps> = ({
         (lc !== 'fr' ? t(dictionary.space) + t(dictionary.license) : '')
     );
     setAbbr(licenseList.map((license) => license.abbr).join('-'));
-  }, [licenseList, t]);
+  }, [licenseList, lc, t]);
 
   const [linkUrl, setLinkUrl] = useState(
     'http://creativecommons.org/licenses/by/4.0/'

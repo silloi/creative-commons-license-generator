@@ -1,6 +1,7 @@
 export const ATTRIBUTION = {
   ATTRIBUTION: {
     label: {
+      de: 'Namensnennung',
       en: 'Attribution',
       fr: 'Attribution',
       zh: '署名',
@@ -13,7 +14,6 @@ export const ATTRIBUTION = {
   NO_ATTRIBUTION: {
     label: {
       en: 'not defined',
-      ja: 'not defined',
     },
     abbr: '',
   },
@@ -22,6 +22,7 @@ export const ATTRIBUTION = {
 export const DERIVATIVES = {
   DERIVATIVES: {
     label: {
+      de: 'Bearbeitungen',
       en: 'Derivatives',
       fr: 'Modification',
       zh: '演绎',
@@ -33,6 +34,7 @@ export const DERIVATIVES = {
   },
   NO_DERIVATIVES: {
     label: {
+      de: 'Keine Bearbeitungen',
       en: 'NoDerivatives',
       fr: 'Pas de Modification',
       zh: '禁止演绎',
@@ -44,6 +46,7 @@ export const DERIVATIVES = {
   },
   SHARE_ALIKE: {
     label: {
+      de: 'Weitergabe unter gleichen Bedingungen',
       en: 'ShareAlike',
       fr: 'Partage dans les Mêmes Conditions',
       zh: '相同方式共享',
@@ -58,6 +61,7 @@ export const DERIVATIVES = {
 export const COMMERCIAL = {
   COMMERCIAL: {
     label: {
+      de: 'Kommerziell',
       en: 'Commercial',
       fr: 'Pas d’Utilisation Commerciale',
       zh: '商业性使用',
@@ -69,6 +73,7 @@ export const COMMERCIAL = {
   },
   NON_COMMERCIAL: {
     label: {
+      de: 'Nicht-kommerziell',
       en: 'NonCommercial',
       fr: 'Utilisation Commerciale',
       zh: '非商业性使用',
@@ -83,7 +88,8 @@ export const COMMERCIAL = {
 export const SIZE = {
   BIG: {
     label: {
-      en: 'Big',
+      de: 'Normales Icon',
+      en: 'BNormal Iconig',
       fr: 'Icône normale',
       zh: '普通图标',
       zh_TW: '一般圖示',
@@ -94,7 +100,8 @@ export const SIZE = {
   },
   SMALL: {
     label: {
-      en: 'Small',
+      de: 'Kompaktes Icon',
+      en: 'Compact Icon',
       fr: 'Icône compacte',
       zh: '紧凑图标',
       zh_TW: '精簡圖示',
@@ -107,6 +114,7 @@ export const SIZE = {
 
 export const dictionary = {
   creativeCommons: {
+    de: 'Creative Commons',
     en: 'Creative Commons',
     fr: 'Creative Commons',
     zh: '知识共享',
@@ -115,6 +123,7 @@ export const dictionary = {
     ko: '크리에이티브 커먼즈 ',
   },
   creativeCommonsLicense: {
+    de: 'Creative Commons Lizenzvertrag',
     en: 'Creative Commons License',
     fr: 'Licence Creative Commons',
     zh: '知识共享许可协议',
@@ -123,6 +132,7 @@ export const dictionary = {
     ko: '크리에이티브 커먼즈 라이선스',
   },
   license: {
+    de: 'Lizenz',
     en: 'License',
     fr: 'Licence',
     zh: '许可协议',
@@ -131,6 +141,7 @@ export const dictionary = {
     ko: '라이선스',
   },
   international: {
+    de: 'International',
     en: 'International',
     fr: 'International',
     zh: '国际',
@@ -139,6 +150,7 @@ export const dictionary = {
     ko: '국제',
   },
   linkBefore: {
+    de: 'Dieses Werk ist lizenziert unter einer ',
     en: 'This work is licensed under a ',
     fr: 'Ce(tte) œuvre est mise à disposition selon les termes de la ',
     zh: '本作品采用',
@@ -147,6 +159,7 @@ export const dictionary = {
     ko: '이 저작물은 ',
   },
   linkAfter: {
+    de: '.',
     en: '.',
     fr: '.',
     zh: '进行许可。',
@@ -171,7 +184,7 @@ export const LC = [
   // 'es_ES',
   // 'ca',
   // 'da',
-  // 'de',
+  'de',
   'en',
   // 'es',
   // 'eo',
