@@ -9,7 +9,6 @@ export const useLocale = () => {
   useEffect(() => {
     // setLc('id'); // Bahasa Indonesia
     // setLc('ms'); // Bahasa Malaysia
-    // setLc('es'); // España
     // setLc('es_ES'); // Castellano (España)
     // setLc('ca'); // Català
     // setLc('da'); // Dansk
@@ -32,7 +31,6 @@ export const useLocale = () => {
     // setLc('pt_BR'); // Português (BR)
     // setLc('ro'); // română
     // setLc('sl'); // Slovenščina
-    // setLc('sr'); // srpski
     // setLc('sr_LATIN'); // srpski (latinica)
     // setLc('fi'); // suomeksi
     // setLc('sv'); // svenska

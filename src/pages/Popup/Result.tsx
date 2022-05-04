@@ -60,10 +60,12 @@ export const Result: React.VFC<ResultProps> = ({
   useEffect(() => {
     setLinkText(
       t(dictionary.creativeCommons) +
+        t(dictionary.space) +
         licenseList
           .map((license) => t(license.label))
           .join(t(dictionary.hyphen)) +
         ` 4.0 ${t(dictionary.international)}` +
+        t(dictionary.space) +
         t(dictionary.license)
     );
     setAbbr(licenseList.map((license) => license.abbr).join('-'));
@@ -86,20 +88,26 @@ export const Result: React.VFC<ResultProps> = ({
     );
   }, [abbr, size]);
 
+  const linkBefore = useMemo(() => t(dictionary.linkBefore), [t]);
+  const linkAfter = useMemo(() => t(dictionary.linkAfter), [t]);
+  const imgAlt = useMemo(() => t(dictionary.creativeCommonsLicense), [t]);
+
   return (
     <>
       <Preview
-        linkBefore={t(dictionary.linkBefore)}
-        linkAfter={t(dictionary.linkAfter)}
+        linkBefore={linkBefore}
+        linkAfter={linkAfter}
         linkText={linkText}
         linkUrl={linkUrl}
+        imgAlt={imgAlt}
         imageUrl={imageUrl}
       />
       <Code
-        linkBefore={t(dictionary.linkBefore)}
-        linkAfter={t(dictionary.linkAfter)}
+        linkBefore={linkBefore}
+        linkAfter={linkAfter}
         linkText={linkText}
         linkUrl={linkUrl}
+        imgAlt={imgAlt}
         imageUrl={imageUrl}
       />
     </>
@@ -111,6 +119,7 @@ type PreviewProps = {
   linkAfter: string;
   linkText: string;
   linkUrl: string;
+  imgAlt: string;
   imageUrl: string;
 };
 
@@ -119,20 +128,19 @@ const Code: React.VFC<PreviewProps> = ({
   linkAfter,
   linkText,
   linkUrl,
+  imgAlt,
   imageUrl,
 }) => {
   const code = useMemo(
     () =>
-      `<a rel="license" href="${linkUrl}"><img alt="Creative Commons License" style="border-width:0" src="${imageUrl}" /></a><br />${linkBefore}<a rel="license" href="${linkUrl}">${linkText}</a>${linkAfter}`,
-    [linkBefore, linkAfter, linkText, linkUrl, imageUrl]
+      `<a rel="license" href="${linkUrl}"><img alt="${imgAlt}" style="border-width:0" src="${imageUrl}" /></a><br />${linkBefore}<a rel="license" href="${linkUrl}">${linkText}</a>${linkAfter}`,
+    [linkBefore, linkAfter, linkText, linkUrl, imgAlt, imageUrl]
   );
   const copy = () => navigator.clipboard.writeText(code);
 
   return (
     <>
-      <textarea readOnly className="codetocopy">
-        {code}
-      </textarea>
+      <textarea readOnly className="codetocopy" value={code} />
       <button onClick={copy}>Copy to clipboard</button>
     </>
   );
@@ -143,16 +151,13 @@ const Preview: React.VFC<PreviewProps> = ({
   linkAfter,
   linkText,
   linkUrl,
+  imgAlt,
   imageUrl,
 }) => (
   <div className="preview">
     <div>
       <a rel="noreferrer" href={linkUrl} target="_blank">
-        <img
-          alt="Creative Commons License"
-          style={{ borderWidth: 0 }}
-          src={imageUrl}
-        />
+        <img alt={imgAlt} style={{ borderWidth: 0 }} src={imageUrl} />
       </a>
       <br />
       {linkBefore}

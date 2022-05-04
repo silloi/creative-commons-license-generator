@@ -31,4 +31,5 @@ textarea {
   border: 1px solid #f3f3f3;
   color: #222;
   box-sizing: border-box;
+  font-family: inherit;
 }
