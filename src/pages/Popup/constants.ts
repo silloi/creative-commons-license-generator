@@ -89,7 +89,7 @@ export const SIZE = {
   BIG: {
     label: {
       de: 'Normales Icon',
-      en: 'BNormal Iconig',
+      en: 'Normal Icon',
       fr: 'Icône normale',
       zh: '普通图标',
       zh_TW: '一般圖示',
