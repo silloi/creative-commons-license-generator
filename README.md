@@ -6,8 +6,7 @@ A chrome extension to generate Creative Commons license in place
 
 ## Resources:
 
-- [Webpack documentation](https://webpack.js.org/concepts/)
-- [Chrome Extension documentation](https://developer.chrome.com/extensions/getstarted)
+- [Choose a License - Creative Commons](https://creativecommons.org/choose/)
 
 ---
 
