@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Creative Commons License Generator",
-  "description": "A chrome extension to generate Creative Commons license",
+  "description": "A chrome extension to generate Creative Commons license in place",
   "options_page": "options.html",
   "background": { "service_worker": "background.bundle.js" },
   "action": {

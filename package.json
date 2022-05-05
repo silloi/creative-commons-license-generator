@@ -1,7 +1,7 @@
 {
   "name": "creative-commons-license-generator",
-  "version": "0.0.1",
-  "description": "A chrome extension to generate Creative Commons license",
+  "version": "1.0.0",
+  "description": "A chrome extension to generate Creative Commons license in place",
   "license": "MIT",
   "repository": {
     "type": "git",
